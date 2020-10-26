@@ -1,7 +1,7 @@
 window.addEventListener('load',function(){
     console.log('hello from script.js')
 
-    let sentences = ["❤ You look great! ❤","❤ What a lovely day! ❤","❤ Super! ❤"];
+    let sentences = ["❤ You look so great! ❤","❤ What a lovely day! ❤","❤ Super! ❤"];
 
     
     // step 1 add event listener
