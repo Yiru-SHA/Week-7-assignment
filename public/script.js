@@ -24,10 +24,10 @@ window.addEventListener('load',function(){
         console.log(happyObj_send);
 
         // setp 4, create json, stringify obj to json
-       let HappyObjJSON = JSON.stringify(happyObj_send);
-       console.log(HappyObjJSON)
+        let HappyObjJSON = JSON.stringify(happyObj_send);
+        console.log(HappyObjJSON)
 
-        //bg change img
+      
         
 
         //step 5 fetch - post/send data to server, pass url and pass object
@@ -44,19 +44,39 @@ window.addEventListener('load',function(){
         .then(data=>{
             console.log("Howay!")
             console.log(data)
-
-            // random show sentence
-            let randomSentenceIndex = Math.floor(Math.random()*sentences.length);
-            let randomSentence = sentences[randomSentenceIndex]
-            console.log(randomSentence);
-    
-            document.getElementById('greet').textContent = randomSentence;
-           
-           // alert("Wonderful day!!");
-
             
         })
+         // random show sentence
+         let randomSentenceIndex = Math.floor(Math.random()*sentences.length);
+         let randomSentence = sentences[randomSentenceIndex]
+         console.log(randomSentence);
+ 
+         document.getElementById('greet').textContent = randomSentence;
         
+        // alert("Wonderful day!!");
+
+    })
+
+    document.getElementById('button-request').addEventListener('click',()=>{
+        console.log("pressed button");
+        fetch('/getHappiness')
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data.data);
+            document.getElementById('inspirations').innerHTML = '';
+            for(let i = 0;i <data.data.length; i++){
+                let string = data.data[i].Happy;
+                let elt = document.createElement('p')
+                elt.innerHTML = string;
+                document.getElementById('inspirations').appendChild(elt);
+
+            }
+
+
+
+        })
+
+
 
     })
    

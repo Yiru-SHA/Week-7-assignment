@@ -54,6 +54,11 @@ app.post('/happyData',(req,res)=>{
 })
 
 
+app.get('/getHappiness', (req,res)=> {
+    let obj = {data: HappyTracker};
+    res.json(obj);
+})
+
 app.listen(7000,()=>{
     console.log("localhost:7000")
 })
